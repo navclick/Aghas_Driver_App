@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#e6eced"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="CURRENT ORDER"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +22,8 @@
         android:layout_marginStart="20dp"
         android:background="@drawable/rc_bg_order_activity"
         android:orientation="horizontal"
-        android:weightSum="10">
+        android:weightSum="10"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -30,23 +40,59 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:orientation="vertical">
+                android:weightSum="10"
+                android:baselineAligned="false">
 
-                <TextView
-                    android:id="@+id/textView_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Customized Errands"
-                    android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="12:00 - 6:00 PM"
-                    android:textColor="#444C51"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Order ID"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2134564"
+                        android:textColor="#444C51"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Customer Name"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Muhammad Naveed"
+                        android:textColor="#444C51"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -60,15 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:drawablePadding="10dp"
-                    android:text="Muhammad Naveed"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView500"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawablePadding="10dp"
-                    android:text="0333-2309923"
+                    android:text="Address"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -89,6 +127,15 @@
 
             </LinearLayout>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autoText="false"
+                android:background="@drawable/border_radius_red"
+                android:text="View Order"
+                android:textColor="#fff"
+                android:textSize="10sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -108,6 +155,71 @@
                 android:textColor="#fff"
                 android:textSize="14sp" />
         </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:weightSum="10"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="5"
+            android:background="@drawable/border_radius_red"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@mipmap/today_order" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Today's Orders"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="5"
+            android:background="@drawable/border_radius_red"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="2dp"
+                android:paddingTop="3dp"
+                app:srcCompat="@mipmap/schedule" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="Schedules"
+                android:textColor="#fff" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
