@@ -129,7 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="10dp"
-                            android:drawableStart="@android:drawable/ic_dialog_map"
+                            android:drawableStart="@mipmap/pin"
                             android:drawableTint="#758089"
                             android:maxLines="3"
                             android:minLines="2"
@@ -254,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:tint="@color/colorPrimary"
-                        app:srcCompat="@android:drawable/ic_menu_manage" />
+                        app:srcCompat="@mipmap/settings" />
 
                     <TextView
                         android:id="@+id/textView8"
@@ -269,7 +269,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/border_stroke"
                     android:gravity="center_vertical|center_horizontal|center"
                     android:orientation="horizontal"
@@ -281,13 +283,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
                         android:tint="@color/colorPrimary"
-                        app:srcCompat="@android:drawable/ic_menu_manage" />
+                        app:srcCompat="@mipmap/logout" />
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
+                        android:text="Logout"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />
 
