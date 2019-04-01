@@ -78,6 +78,7 @@
             android:background="@drawable/border_radius_red"
             android:stateListAnimator="@null"
             android:text="Sign In"
+            style="?android:attr/borderlessButtonStyle"
             android:textColor="@android:color/white"
             android:textSize="12sp" />
 
