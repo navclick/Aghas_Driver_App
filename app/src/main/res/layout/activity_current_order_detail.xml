@@ -40,7 +40,7 @@
                         android:textColor="#758089" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/txt_orderid"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2135649"
@@ -63,7 +63,7 @@
                         android:textColor="#758089" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/txt_total"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="PKR 5402"
@@ -106,7 +106,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/txt_customername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="3"
@@ -132,7 +132,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/txt_orderdate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="3"
@@ -170,7 +170,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/txt_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/address"
@@ -194,7 +194,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/txt_deliverydate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2 Oct 2019"
@@ -260,7 +260,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btn_changeorderstatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/green_btn"
@@ -289,67 +289,73 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewOrderItems"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:nestedScrollingEnabled="false"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingEnd="20dp"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:weightSum="10">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
 
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:text="American Garden Italian Dressing 473ml x 1" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:paddingEnd="20dp"-->
+                    <!--android:paddingStart="20dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:weightSum="10">-->
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:gravity="end"
-                        android:text="Rs. 1650" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView14"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="5"-->
+                        <!--android:text="American Garden Italian Dressing 473ml x 1" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="5"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:paddingBottom="10dp"
-                    android:paddingEnd="20dp"
-                    android:paddingStart="20dp"
-                    android:paddingTop="10dp"
-                    android:weightSum="10">
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView15"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="5"-->
+                        <!--android:gravity="end"-->
+                        <!--android:text="Rs. 1650" />-->
+                <!--</LinearLayout>-->
 
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:text="American Garden Italian Dressing 473ml x 1" />
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="5"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:paddingEnd="20dp"-->
+                    <!--android:paddingStart="20dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:weightSum="10">-->
 
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="5"
-                        android:gravity="end"
-                        android:text="Rs. 1650" />
-                </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView14"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="5"-->
+                        <!--android:text="American Garden Italian Dressing 473ml x 1" />-->
 
-            </LinearLayout>
+                    <!--<TextView-->
+                        <!--android:id="@+id/textView15"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="5"-->
+                        <!--android:gravity="end"-->
+                        <!--android:text="Rs. 1650" />-->
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
 
             <View
                 android:id="@+id/divider2"

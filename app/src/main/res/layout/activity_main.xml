@@ -68,10 +68,10 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/textView4"
+                                android:id="@+id/txt_orderid"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="2134564"
+                                android:text="0"
                                 android:textColor="#444C51"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -93,7 +93,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/textView4"
+                                android:id="@+id/txt_customername"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Muhammad Naveed"
@@ -125,7 +125,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/txt_address"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="10dp"
@@ -142,6 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"
+                        android:id="@+id/btn_vieworder"
                         android:autoText="false"
                         android:background="@drawable/border_radius_red"
                         android:minHeight="25dp"
@@ -161,11 +162,20 @@
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical|center_horizontal|center"
                         android:text="@string/main_card"
                         android:textColor="#fff"
                         android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txt_total"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical|center_horizontal|center"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="20sp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -257,7 +267,7 @@
                         app:srcCompat="@mipmap/settings" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/txt_settings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Settings"
