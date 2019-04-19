@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
     //Declarations
     public String TokenString;
     TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtSettings;
+    ImageView txtTodaysOrders, txtScheduledOrders;
     Button btnViewOrder;
 
     @Override
@@ -43,10 +45,14 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         txtAddress = (TextView) findViewById(R.id.txt_address);
         txtSettings = (TextView) findViewById(R.id.txt_settings);
         txtTotal = (TextView) findViewById(R.id.txt_total);
+        txtTodaysOrders = (ImageView) findViewById(R.id.txt_todaysorders);
+        txtScheduledOrders = (ImageView) findViewById(R.id.txt_scheduledorders);
         btnViewOrder = (Button) findViewById(R.id.btn_vieworder);
 
         // Listeners
         txtSettings.setOnClickListener(this);
+        txtTodaysOrders.setOnClickListener(this);
+        txtScheduledOrders.setOnClickListener(this);
         btnViewOrder.setOnClickListener(this);
 
         TokenString = tokenHelper.GetToken();
@@ -64,6 +70,15 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
 
             case R.id.btn_vieworder:
                 OpenActivity(CurrentOrderDetailActivity.class, txtOrderId.getText().toString());
+                break;
+
+            case R.id.txt_todaysorders:
+                OpenActivity(TodaysOrdersActivity.class);
+                break;
+
+            case R.id.txt_scheduledorders:
+                OpenActivity(ScheduledOrdersActivity.class);
+                break;
         }
     }
 

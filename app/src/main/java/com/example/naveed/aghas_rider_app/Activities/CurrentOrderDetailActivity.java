@@ -35,7 +35,7 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
     //Declarations
     public String TokenString;
     TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtOrderDate, txtDeliveryDate;
-    Button btnChangeOrderStatus;
+    Button btnChangeOrderStatus, btnHome;
 
     private List<OrderItems> myOrderList = new ArrayList<>();
     private RecyclerView recyclerViewOrderItems;
@@ -52,8 +52,13 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
         txtAddress = (TextView) findViewById(R.id.txt_address);
         txtOrderDate = (TextView) findViewById(R.id.txt_orderdate);
         txtDeliveryDate = (TextView) findViewById(R.id.txt_deliverydate);
-        btnChangeOrderStatus = (Button) findViewById(R.id.btn_changeorderstatus);
         txtTotal = (TextView) findViewById(R.id.txt_total);
+        btnChangeOrderStatus = (Button) findViewById(R.id.btn_changeorderstatus);
+        btnHome = (Button) findViewById(R.id.btn_home);
+
+        // Events
+        btnChangeOrderStatus.setOnClickListener(this);
+        btnHome.setOnClickListener(this);
 
         recyclerViewOrderItems = (RecyclerView) findViewById(R.id.recyclerViewOrderItems);
         myOrderDetailAdapter = new MyOrderDetailAdapter(myOrderList);
@@ -79,6 +84,8 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
         switch (v.getId()){
             case R.id.txt_settings:
                 OpenActivity(LoginActivity.class);
+            case R.id.btn_home:
+                OpenActivity(CurrentOrderActivity.class);
         }
     }
 
@@ -102,7 +109,6 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
                             String err = jObjError.getString("error_description").toString();
                             Log.d("Error", err);
                             //Toast.makeText(MyOrderActivity.this, err, Toast.LENGTH_SHORT).show();
-                            hideProgress();
                         } catch (Exception e) {
                             Log.d("Exception", e.getMessage());
                             //Toast.makeText(MyOrderActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
@@ -136,9 +142,9 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
                             OrderItems o = new OrderItems(ordid, itmid, itemname, quantity);
                             myOrderList.add(o);
                             }
-                        myOrderDetailAdapter.notifyDataSetChanged();
-                        hideProgress();
                         }
+                    myOrderDetailAdapter.notifyDataSetChanged();
+                    hideProgress();
                 }
                 @Override
                 public void onFailure(Call<Order> call, Throwable t) {

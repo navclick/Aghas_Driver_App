@@ -201,13 +201,13 @@
                     android:padding="20dp">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/txt_todaysorders"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@mipmap/today_order" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/imageView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
@@ -226,7 +226,7 @@
                     android:padding="20dp">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/txt_scheduledorders"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="2dp"
@@ -234,7 +234,7 @@
                         app:srcCompat="@mipmap/schedule" />
 
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/imageView33"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
