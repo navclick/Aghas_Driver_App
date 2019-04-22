@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Agha\'s Rider App</string>
-    <string name="main_card">RECEIVE\n<font size="20">PKR\n5204</font></string>
+    <string name="main_card">RECEIVE</string>
+    <!--<string name="main_card">RECEIVE\n<font size="20">PKR\n521041</font></string>-->
+    <string name="schedule_card">8 DEC\nWED</string>
+    <string name="datetime">8:30am\n2 May 2019</string>
+    <string name="address">11-A, Lane 6, Zamzama,\nCommercial Street, Phase 3, DHA, Karachi</string>
 </resources>
