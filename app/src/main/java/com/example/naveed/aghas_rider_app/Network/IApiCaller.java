@@ -1,6 +1,7 @@
 package com.example.naveed.aghas_rider_app.Network;
 
 import com.example.naveed.aghas_rider_app.Models.Order;
+import com.example.naveed.aghas_rider_app.Models.OrderList;
 import com.example.naveed.aghas_rider_app.Models.Token;
 
 import java.util.List;
@@ -24,10 +25,10 @@ public interface IApiCaller {
     Call<Order> GetCurrentOrder();
 
     @GET(EndPoints.TODAYSORDER)
-    Call<List<Order>> GetTodaysOrders();
+    Call<OrderList> GetTodaysOrders();
 
     @GET(EndPoints.SCHEDULEDORDER)
-    Call<List<Order>> GetScheduledOrders();
+    Call<OrderList> GetScheduledOrders();
 
     @GET(EndPoints.ORDERDETAIL)
     Call<Order> GetOrderDetail(@Query("id") int id);

@@ -34,7 +34,10 @@
         <activity android:name=".Activities.OrderActivity" />
         <activity android:name=".Activities.CurrentOrderDetailActivity" />
         <activity android:name=".Activities.TodaysOrdersActivity" />
-        <activity android:name=".Activities.ScheduledOrdersActivity"></activity>
+        <activity android:name=".Activities.ScheduledOrdersActivity" />
+        <activity android:name=".Activities.TodaysOrderDetailActivity" />
+        <activity android:name=".Activities.ScheduledOrderDetailActivity" />
+        <activity android:name=".Activities.SettingActivity"></activity>
     </application>
 
 </manifest>

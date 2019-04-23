@@ -29,7 +29,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
 
     //Declarations
     public String TokenString;
-    TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtSettings;
+    TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtSettings, txtLogOut;
     ImageView txtTodaysOrders, txtScheduledOrders;
     Button btnViewOrder;
 
@@ -47,12 +47,14 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         txtTotal = (TextView) findViewById(R.id.txt_total);
         txtTodaysOrders = (ImageView) findViewById(R.id.txt_todaysorders);
         txtScheduledOrders = (ImageView) findViewById(R.id.txt_scheduledorders);
+        txtLogOut = (TextView) findViewById(R.id.txt_logout);
         btnViewOrder = (Button) findViewById(R.id.btn_vieworder);
 
         // Listeners
         txtSettings.setOnClickListener(this);
         txtTodaysOrders.setOnClickListener(this);
         txtScheduledOrders.setOnClickListener(this);
+        txtLogOut.setOnClickListener(this);
         btnViewOrder.setOnClickListener(this);
 
         TokenString = tokenHelper.GetToken();
@@ -66,7 +68,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.txt_settings:
-                OpenActivity(LoginActivity.class);
+                OpenActivity(SettingActivity.class);
 
             case R.id.btn_vieworder:
                 OpenActivity(CurrentOrderDetailActivity.class, txtOrderId.getText().toString());
@@ -78,6 +80,10 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
 
             case R.id.txt_scheduledorders:
                 OpenActivity(ScheduledOrdersActivity.class);
+                break;
+
+            case R.id.txt_logout:
+                Logout();
                 break;
         }
     }
@@ -140,5 +146,11 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
             //Toast.makeText(MyOrderActivity.this, "Email or password is not correct", Toast.LENGTH_SHORT).show();
             hideProgress();
         }
+    }
+
+    private void Logout(){
+        tokenHelper.removeALL();
+        // this.deleteDatabase(Constants.DATABASE_NAME);
+        startActivity(this,LoginActivity.class);
     }
 }
