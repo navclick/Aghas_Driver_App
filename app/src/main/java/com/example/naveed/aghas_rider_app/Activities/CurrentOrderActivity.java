@@ -127,7 +127,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
                             txtOrderId.setText(orderid);
                             txtCustomerName.setText(customername);
                             txtAddress.setText(address);
-                            txtTotal.setText("PKR" + total);
+                            txtTotal.setText(total);
 
                             hideProgress();
                         }
