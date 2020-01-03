@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".Activities.LoginActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -46,7 +46,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/border_radius"
             android:ems="20"
-            android:text="rider@gmail.com"
+            android:text="testrider@gmail.com"
             android:hint="Phone Number"
             android:inputType="textPersonName"
             android:textSize="12sp"

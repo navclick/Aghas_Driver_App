@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import com.example.naveed.aghas_rider_app.Base.BaseActivity;
 import com.example.naveed.aghas_rider_app.Helpers.Constants;
+import com.example.naveed.aghas_rider_app.Helpers.GeneralCallBack;
 import com.example.naveed.aghas_rider_app.Models.Order;
 import com.example.naveed.aghas_rider_app.Network.ApiClient;
 import com.example.naveed.aghas_rider_app.Network.IApiCaller;
+import com.example.naveed.aghas_rider_app.Network.RestClient;
 import com.example.naveed.aghas_rider_app.R;
 import com.google.gson.Gson;
 
@@ -61,7 +63,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         if(TokenString == null)
             OpenActivity(LoginActivity.class);
 
-        GetCurrentOrder();
+        GetCurrentOrderFromServer();
     }
 
     @Override
@@ -87,6 +89,59 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
                 break;
         }
     }
+
+
+
+
+
+
+    private void GetCurrentOrderFromServer(){
+
+
+        showProgress();
+        Log.d("test","intest");
+        RestClient.getAuthAdapterToekn(tokenHelper.GetToken()).GetCurrentOrder().enqueue(new GeneralCallBack<Order>(this) {
+            @Override
+            public void onSuccess(Order response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d(Constants.TAG, Reslog);
+                hideProgress();
+
+                if (!response.getIserror()) {
+
+
+
+                    //getFproducts();
+
+                }
+                else{
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                Log.d("test",throwable.getMessage());
+
+            }
+
+
+
+        });
+
+
+
+
+
+    }
+
+
 
     private void GetCurrentOrder(){
         showProgress();
