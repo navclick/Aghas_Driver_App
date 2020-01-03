@@ -29,6 +29,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
+                android:background="@drawable/rc_bg_order_activity"
                 android:orientation="horizontal">
 
                 <TextView
@@ -51,6 +52,7 @@
                 android:background="@drawable/rc_bg_order_activity"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 android:weightSum="10">
 
                 <LinearLayout
@@ -158,10 +160,10 @@
                     </LinearLayout>
 
                     <Button
+                        android:id="@+id/btn_vieworder"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"
-                        android:id="@+id/btn_vieworder"
                         android:autoText="false"
                         android:background="@drawable/border_radius_red"
                         android:minHeight="25dp"
