@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
     TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtSettings, txtLogOut;
     ImageView txtTodaysOrders, txtScheduledOrders;
     Button btnViewOrder;
+    LinearLayout LL_orders,LL_no_orders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,10 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         txtScheduledOrders = (ImageView) findViewById(R.id.txt_scheduledorders);
         txtLogOut = (TextView) findViewById(R.id.txt_logout);
         btnViewOrder = (Button) findViewById(R.id.btn_vieworder);
+        LL_orders=(LinearLayout) findViewById(R.id.LL_orders);
+
+        LL_no_orders= (LinearLayout) findViewById(R.id.LL_no_orders);
+
 
         // Listeners
         txtSettings.setOnClickListener(this);
@@ -110,7 +116,29 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
 
                 if (!response.getIserror()) {
 
+                if(response.getCode() != 404){
 
+                    LL_orders.setVisibility(View.VISIBLE);
+                            LL_no_orders.setVisibility(View.GONE);
+                    Order.Value list = response.getValue();
+                    String orderid = list.getId().toString();
+                    String customername = list.getCustomerName();
+                    String address = list.getAddress();
+                    String total = list.getTotal().toString();
+
+                    txtOrderId.setText(orderid);
+                    txtCustomerName.setText(customername);
+                    txtAddress.setText(address);
+                    txtTotal.setText(total);
+
+
+                }
+                else{
+
+                    LL_orders.setVisibility(View.GONE);
+                    LL_no_orders.setVisibility(View.VISIBLE);
+
+                }
 
                     //getFproducts();
 
