@@ -154,6 +154,8 @@ public class TodaysOrdersActivity extends BaseActivity implements View.OnClickLi
             case R.id.btn_home:
                 OpenActivity(CurrentOrderActivity.class);
                 break;
+
+
         }
     }
 }
