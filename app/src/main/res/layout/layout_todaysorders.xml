@@ -118,6 +118,20 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/green_btn"
+                    android:text="Make Active"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
