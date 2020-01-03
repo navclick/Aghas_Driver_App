@@ -23,7 +23,7 @@
                 android:paddingEnd="20dp"
                 android:paddingStart="20dp"
                 android:paddingTop="20dp"
-                android:weightSum="10">
+                android:weightSum="15">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -70,6 +70,28 @@
                         android:textColor="#1e1e1e"
                         android:textSize="18sp" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status"
+                        android:textColor="#758089" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delivered"
+                        android:textColor="#1e1e1e"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -300,6 +322,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
+                android:background="#bababa"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp"
                 android:paddingEnd="20dp"
@@ -328,6 +351,18 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/green_btn"
+                android:minHeight="35dp"
+                android:text="Make Active"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/btn_home"
