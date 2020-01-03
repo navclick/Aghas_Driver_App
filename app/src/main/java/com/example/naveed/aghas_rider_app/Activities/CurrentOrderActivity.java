@@ -98,6 +98,8 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
             response.enqueue(new Callback<Order>() {
                 @Override
                 public void onResponse(Call<Order> call, Response<Order> response) {
+
+
                     Order obj = response.body();
 
                     Gson gson = new Gson();

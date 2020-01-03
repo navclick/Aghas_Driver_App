@@ -16,6 +16,7 @@ import com.example.naveed.aghas_rider_app.Network.ApiClient;
 import com.example.naveed.aghas_rider_app.Network.IApiCaller;
 import com.example.naveed.aghas_rider_app.R;
 import com.example.naveed.aghas_rider_app.Utilities.ValidationUtility;
+import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
@@ -74,6 +75,10 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
             response.enqueue(new Callback<Token>() {
                 @Override
                 public void onResponse(Call<Token> call, Response<Token> response) {
+
+                    Gson gson = new Gson();
+                    String Reslog= gson.toJson(response);
+                    Log.d("testme", Reslog);
                     Token objToken = response.body();
                     if(objToken == null){
                         try {

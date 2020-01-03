@@ -34,7 +34,7 @@ public class SplashActivity extends BaseActivity {
                     i = new Intent(SplashActivity.this, LoginActivity.class);
                 }
                 else{
-                    i = new Intent(SplashActivity.this, LoginActivity.class);
+                    i = new Intent(SplashActivity.this, CurrentOrderActivity.class);
 
                 }
 
