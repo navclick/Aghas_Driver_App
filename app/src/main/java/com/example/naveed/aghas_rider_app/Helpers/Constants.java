@@ -7,9 +7,9 @@ public class Constants {
 
     // Network
 
-    public static String BASE_URL="http://aghasapi.insidedemo.com/";
+    //public static String BASE_URL="http://aghasapi.insidedemo.com/";
     //public static String BASE_URL = "http://192.168.100.2:9091/";
-    //public static String BASE_URL="http://apis.aghas.com.pk/";
+    public static String BASE_URL="http://apis.aghas.com.pk/";
   //  public static String BASE_URL = "http://192.168.100.2:9091/";
     // public static String BASE_URL = "http://ocflexapi.insidedemo.com/";
     public final static  long CONNECTION_TIMEOUT = 25;
