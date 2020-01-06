@@ -39,6 +39,12 @@
         <activity android:name=".Activities.ScheduledOrdersActivity" />
         <activity android:name=".Activities.TodaysOrderDetailActivity" />
         <activity android:name=".Activities.ScheduledOrderDetailActivity" />
+        <activity android:name=".Activities.StatusChangeActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoTitleDialog"
+            />
+
         <activity android:name=".Activities.SettingActivity"></activity>
     </application>
 

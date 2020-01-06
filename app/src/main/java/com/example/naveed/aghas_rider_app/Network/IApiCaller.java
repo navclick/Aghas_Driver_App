@@ -38,4 +38,8 @@ public interface IApiCaller {
 
     @GET(EndPoints.MAKEACTIVE)
     Call<GResponse> MakeOrderActive(@Query("id") int id);
+
+
+    @GET(EndPoints.UPDATESTATUS)
+    Call<GResponse> UpdateStatus(@Query("id") int id,@Query("status") int status,@Query("reason") String reason);
 }

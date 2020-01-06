@@ -37,6 +37,7 @@ public class Constants {
     public static final int ORDER_DELIVERED= 6;
     public static final int ORDER_RETURNED = 8;
     public static final int ORDER_CANCELLED_BY_CUSTOMER = 11;
+    public static final int ORDER_CANCELLED= 7;
 
 
     public static final Map<Integer, String> OrderStatus = new HashMap<Integer, String>();

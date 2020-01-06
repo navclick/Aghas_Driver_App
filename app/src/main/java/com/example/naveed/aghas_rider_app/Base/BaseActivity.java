@@ -83,7 +83,10 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    public void openActivity(Class activity) {
 
+        startActivity(new Intent(this, activity));
+    }
     public static void startActivity(Context context, Class activity) {
 
         Intent intent = new Intent(context, activity);

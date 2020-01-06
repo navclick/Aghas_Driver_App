@@ -10,4 +10,7 @@ public class EndPoints {
     public static final String ORDERDETAIL = API_PREFIX + "order/orderdetail";
     public static final String MAKEACTIVE = API_PREFIX + "order/MakeOrderActive";
 
+    public static final String UPDATESTATUS = API_PREFIX + "order/UpdateOrderStatusFromRider";
+
+
 }

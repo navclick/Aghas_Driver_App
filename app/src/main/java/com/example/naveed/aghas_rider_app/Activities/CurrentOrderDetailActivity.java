@@ -99,6 +99,11 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
             case R.id.btn_call:
                 callCustomer();
                 break;
+            case R.id.btn_changeorderstatus:
+                openActivity(StatusChangeActivity.class);
+                break;
+
+
         }
 
 
