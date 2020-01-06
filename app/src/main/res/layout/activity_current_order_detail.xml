@@ -245,7 +245,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btn_call"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/call_btn"

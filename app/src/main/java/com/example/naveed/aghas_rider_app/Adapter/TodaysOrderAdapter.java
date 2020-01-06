@@ -18,7 +18,7 @@ public class TodaysOrderAdapter extends RecyclerView.Adapter<TodaysOrderAdapter.
     int count = 0;
 
     public class ListViewHolder extends RecyclerView.ViewHolder{
-        public TextView txtOrderId, txtTotal, txtCustomerName, txtAddress;
+        public TextView txtOrderId, txtTotal, txtCustomerName, txtAddress,txt_Date_time;
 
         public ListViewHolder(View view) {
             super(view);
@@ -26,6 +26,8 @@ public class TodaysOrderAdapter extends RecyclerView.Adapter<TodaysOrderAdapter.
             //txtTotal = (TextView) view.findViewById(R.id.txt_total);
             txtCustomerName = (TextView) view.findViewById(R.id.txt_customername);
             txtAddress = (TextView) view.findViewById(R.id.txt_address);
+            txtTotal=(TextView) view.findViewById(R.id.txt_total);
+            txt_Date_time=(TextView) view.findViewById(R.id.txt_Date_time);
         }
     }
 
@@ -48,7 +50,7 @@ public class TodaysOrderAdapter extends RecyclerView.Adapter<TodaysOrderAdapter.
         count = count + 1;
 
         String orderid  = myOrders.getOrderId().toString();
-        String total = "Rs. " + myOrders.getTotal().toString();
+        String total = myOrders.getTotal().toString();
         String customername = myOrders.getCustomerName();
         String address = myOrders.getAddress();
 
@@ -56,6 +58,8 @@ public class TodaysOrderAdapter extends RecyclerView.Adapter<TodaysOrderAdapter.
         //holder.txtTotal.setText(total);
         holder.txtCustomerName.setText(customername);
         holder.txtAddress.setText(address);
+        holder.txt_Date_time.setText(myOrders.getOrderTime());
+        holder.txtTotal.setText(total);
     }
 
     @Override

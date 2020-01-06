@@ -16,6 +16,7 @@ import com.example.naveed.aghas_rider_app.Helpers.Constants;
 import com.example.naveed.aghas_rider_app.Listeners.RecyclerTouchListener;
 import com.example.naveed.aghas_rider_app.Models.Order;
 import com.example.naveed.aghas_rider_app.Models.OrderList;
+import com.example.naveed.aghas_rider_app.Models.OrderListUp;
 import com.example.naveed.aghas_rider_app.Models.OrderVM;
 import com.example.naveed.aghas_rider_app.Network.ApiClient;
 import com.example.naveed.aghas_rider_app.Network.IApiCaller;
@@ -94,12 +95,12 @@ public class TodaysOrdersActivity extends BaseActivity implements View.OnClickLi
         try {
             String token = "Bearer " + TokenString;
             IApiCaller callerResponse = ApiClient.createService(IApiCaller.class, token);
-            Call<OrderList> response = callerResponse.GetTodaysOrders();
+            Call<OrderListUp> response = callerResponse.GetTodaysOrders();
 
-            response.enqueue(new Callback<OrderList>() {
+            response.enqueue(new Callback<OrderListUp>() {
                 @Override
-                public void onResponse(Call<OrderList> call, Response<OrderList> response) {
-                    OrderList obj = response.body();
+                public void onResponse(Call<OrderListUp> call, Response<OrderListUp> response) {
+                    OrderListUp obj = response.body();
 
                     Gson gson = new Gson();
                     String Reslog= gson.toJson(response);
@@ -117,16 +118,16 @@ public class TodaysOrdersActivity extends BaseActivity implements View.OnClickLi
                             hideProgress();
                         }
                     }else{
-                        List<OrderList.Value> orderlist = obj.getValue();
+                        List<OrderListUp.Value> orderlist = obj.getValue();
 
-                        for (OrderList.Value itemsList: orderlist){
+                        for (OrderListUp.Value itemsList: orderlist){
 
                             int orderid = itemsList.getId();
                             int total = itemsList.getTotal();
                             String customername = itemsList.getCustomerName();
                             String address = itemsList.getAddress();
 
-                            OrderVM ord = new OrderVM(orderid, total, customername, address);
+                            OrderVM ord = new OrderVM(orderid, total, customername, address,itemsList.getOrderTime());
                             orderList.add(ord);
                         }
                     }
@@ -134,7 +135,7 @@ public class TodaysOrdersActivity extends BaseActivity implements View.OnClickLi
                     hideProgress();
                 }
                 @Override
-                public void onFailure(Call<OrderList> call, Throwable t) {
+                public void onFailure(Call<OrderListUp> call, Throwable t) {
                     //Toast.makeText(MyOrderActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
 //                Log.d("ApiError",t.getMessage());
                     hideProgress();

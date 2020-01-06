@@ -125,7 +125,7 @@ public class ScheduledOrdersActivity extends BaseActivity implements View.OnClic
                             String customername = itemsList.getCustomerName();
                             String address = itemsList.getAddress();
 
-                            OrderVM ord = new OrderVM(orderid, total, customername, address);
+                            OrderVM ord = new OrderVM(orderid, total, customername, address,itemsList.getOrderTime());
                             orderList.add(ord);
                         }
                     }

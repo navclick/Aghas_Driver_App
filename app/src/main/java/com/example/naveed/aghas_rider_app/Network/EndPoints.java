@@ -8,5 +8,6 @@ public class EndPoints {
     public static final String TODAYSORDER = API_PREFIX + "order/gettodaysorders";
     public static final String SCHEDULEDORDER = API_PREFIX + "order/getscheduledsorders";
     public static final String ORDERDETAIL = API_PREFIX + "order/orderdetail";
+    public static final String MAKEACTIVE = API_PREFIX + "order/MakeOrderActive";
 
 }

@@ -1,5 +1,10 @@
 package com.example.naveed.aghas_rider_app.Activities;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +27,10 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +44,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
     ImageView txtTodaysOrders, txtScheduledOrders;
     Button btnViewOrder;
     LinearLayout LL_orders,LL_no_orders;
+    final private int  REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +73,7 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         txtScheduledOrders.setOnClickListener(this);
         txtLogOut.setOnClickListener(this);
         btnViewOrder.setOnClickListener(this);
-
+        GetPermissions();
         TokenString = tokenHelper.GetToken();
         if(TokenString == null)
             OpenActivity(LoginActivity.class);
@@ -237,5 +246,115 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         tokenHelper.removeALL();
         // this.deleteDatabase(Constants.DATABASE_NAME);
         startActivity(this,LoginActivity.class);
+    }
+
+
+
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void GetPermissions(){
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED  || ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)  {
+
+            if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.LOLLIPOP){
+                List<String> permissionsNeeded = new ArrayList<String>();
+
+                final List<String> permissionsList = new ArrayList<String>();
+                if (!addPermission(permissionsList, Manifest.permission.ACCESS_FINE_LOCATION))
+                    permissionsNeeded.add("GPS");
+                if (!addPermission(permissionsList, Manifest.permission.ACCESS_COARSE_LOCATION))
+                    permissionsNeeded.add("Location");
+
+                if (!addPermission(permissionsList, Manifest.permission.CAMERA))
+                    permissionsNeeded.add("Camera");
+
+                if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                    permissionsNeeded.add("Write_External_Storage");
+                if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE))
+                    permissionsNeeded.add("Read_External_Storage");
+
+                if (!addPermission(permissionsList, Manifest.permission.CALL_PHONE))
+                    permissionsNeeded.add("Call_phone");
+
+
+                if (permissionsList.size() > 0) {
+                    if (permissionsNeeded.size() > 0) {
+
+
+                    }
+                    requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                            REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
+                    return;
+                }
+
+            }
+
+
+
+
+            return;
+        }
+
+        else{
+
+
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            // Check for Rationale Option
+            if (!shouldShowRequestPermissionRationale(permission))
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS:
+            {
+                Map<String, Integer> perms = new HashMap<String, Integer>();
+                // Initial
+                perms.put(Manifest.permission.ACCESS_FINE_LOCATION, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.ACCESS_COARSE_LOCATION, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.CAMERA, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.CALL_PHONE, PackageManager.PERMISSION_GRANTED);
+
+                // Fill with results
+                for (int i = 0; i < permissions.length; i++)
+                    perms.put(permissions[i], grantResults[i]);
+                // Check for ACCESS_FINE_LOCATION
+                if (perms.get(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+
+
+                        ) {
+                    // All Permissions Granted
+
+                    // setMapForV6();
+
+                } else {
+                    // Permission Denied
+                    // Toast.makeText(this, "Some Permission is Denied", Toast.LENGTH_SHORT)
+                    //       .show();
+
+                    showMessageDailog(getString(R.string.app_name), Constants.MESSAGE_REQUESTED_PERMISSION_DENIED);
+
+                }
+            }
+            break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }

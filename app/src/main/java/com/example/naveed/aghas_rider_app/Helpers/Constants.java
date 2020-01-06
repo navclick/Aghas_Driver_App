@@ -31,22 +31,30 @@ public class Constants {
 
     // Splash screen
     public static final int ORDER_PENDING = 1;
-    public static final int ORDER_ASSIGNED = 2;
-    public static final int ORDER_ACTIVE = 3;
-    public static final int ORDER_COMPLETED = 4;
-    public static final int ORDER_CANCELLED_BY_CUSTOMER = 5;
-    public static final int ORDER_CANCELLED_BY_ASSOCIATE = 6;
+    public static final int ORDER_PLACED = 2;
+    public static final int ORDER_ASSIGNED = 3;
+    public static final int ORDER_ACTIVE = 5;
+    public static final int ORDER_DELIVERED= 6;
+    public static final int ORDER_RETURNED = 8;
+    public static final int ORDER_CANCELLED_BY_CUSTOMER = 11;
+
 
     public static final Map<Integer, String> OrderStatus = new HashMap<Integer, String>();
 
     public static void init(){
 
         OrderStatus.put(1,"Pending");
-        OrderStatus.put(2,"Assigned");
-        OrderStatus.put(3,"Active");
-        OrderStatus.put(4,"Completed");
-        OrderStatus.put(5,"Cancelled by Customer");
-        OrderStatus.put(6,"Cancelled by Associate");
+        OrderStatus.put(2,"Placed");
+        OrderStatus.put(3,"Assigned");
+        OrderStatus.put(4,"Dispatched");
+        OrderStatus.put(5,"Active");
+        OrderStatus.put(6,"Dilivered");
+
+        OrderStatus.put(7,"Canceled");
+        OrderStatus.put(8,"Returned");
+        OrderStatus.put(9,"Ready For Pickup");
+        OrderStatus.put(10,"Picked");
+        OrderStatus.put(11,"Canceled By Customer");
     }
 
     public static final String MSG_SERVICE_STATUS_UPDATED= "Service status updated.";
