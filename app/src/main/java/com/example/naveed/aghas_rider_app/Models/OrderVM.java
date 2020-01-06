@@ -1,16 +1,19 @@
 package com.example.naveed.aghas_rider_app.Models;
 
+import java.util.Date;
+
 public class OrderVM {
     //
     public OrderVM(){
 
     }
 
-    public OrderVM(int orderid, int total, String customername, String address){
+    public OrderVM(int orderid, int total, String customername, String address,String orderTime){
         this.OrderId = orderid;
         this.Total = total;
         this.CustomerName = customername;
         this.Address = address;
+        this.OrderTime=orderTime;
     }
 
 
@@ -18,6 +21,7 @@ public class OrderVM {
     private Integer Total;
     private String CustomerName;
     private String Address;
+    private String OrderTime;
 
     public Integer getOrderId() {
         return OrderId;
@@ -49,5 +53,14 @@ public class OrderVM {
 
     public void setAddress(String address) {
         this.Address = address;
+    }
+
+
+    public String getOrderTime() {
+        return OrderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.OrderTime = orderTime;
     }
 }

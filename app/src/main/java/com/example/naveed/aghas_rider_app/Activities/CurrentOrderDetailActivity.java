@@ -1,5 +1,11 @@
 package com.example.naveed.aghas_rider_app.Activities;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -35,11 +41,12 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
     //Declarations
     public String TokenString;
     TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtOrderDate, txtDeliveryDate;
-    Button btnChangeOrderStatus, btnHome;
+    Button btnChangeOrderStatus, btnHome, btn_call;
 
     private List<OrderItems> myOrderList = new ArrayList<>();
     private RecyclerView recyclerViewOrderItems;
     private MyOrderDetailAdapter myOrderDetailAdapter;
+    private String CustomerCell = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +62,11 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
         txtTotal = (TextView) findViewById(R.id.txt_total);
         btnChangeOrderStatus = (Button) findViewById(R.id.btn_changeorderstatus);
         btnHome = (Button) findViewById(R.id.btn_home);
-
+        btn_call = (Button) findViewById(R.id.btn_call);
         // Events
         btnChangeOrderStatus.setOnClickListener(this);
         btnHome.setOnClickListener(this);
-
+        btn_call.setOnClickListener(this);
         recyclerViewOrderItems = (RecyclerView) findViewById(R.id.recyclerViewOrderItems);
         myOrderDetailAdapter = new MyOrderDetailAdapter(myOrderList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -68,26 +75,56 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
         recyclerViewOrderItems.setAdapter(myOrderDetailAdapter);
 
         String orderid = getIntent().getStringExtra("id");
-        if(orderid == null)
+        if (orderid == null)
             OpenActivity(LoginActivity.class);
-        else{
-            if(Integer.valueOf(orderid) > 0){
+        else {
+            if (Integer.valueOf(orderid) > 0) {
                 txtOrderId.setText(orderid);
                 GetCurrentOrder(Integer.parseInt(orderid));
-            }else{
+            } else {
                 OpenActivity(LoginActivity.class);
             }
         }
     }
 
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.txt_settings:
                 OpenActivity(LoginActivity.class);
+                break;
             case R.id.btn_home:
                 OpenActivity(CurrentOrderActivity.class);
+                break;
+
+            case R.id.btn_call:
+                callCustomer();
+                break;
         }
+
+
+
     }
+
+    private void callCustomer() {
+
+
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + CustomerCell));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+
+            new AlertDialog.Builder(this)
+                    .setTitle("App")
+                    .setMessage("Call permission not granted !")
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+
+
+
+            return;
+        }
+        startActivity(intent);
+    }
+
 
     private void GetCurrentOrder(int orderid){
         showProgress();
@@ -128,6 +165,17 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
                         txtAddress.setText(address);
                         txtTotal.setText(total);
                         txtOrderDate.setText(orderdate);
+
+                        if(obj.getValue().getContactNo().toString().isEmpty() || obj.getValue().getContactNo().toString()==""){
+
+                            btn_call.setVisibility(View.GONE);
+
+
+                        }
+                        else{
+                            btn_call.setVisibility(View.VISIBLE);
+                            CustomerCell=obj.getValue().getContactNo().toString();
+                        }
 
                         List<Order.OrderItem> orderitems = list.getOrderItem();
                         //List<OrderItems> itms = new ArrayList<OrderItems>();
