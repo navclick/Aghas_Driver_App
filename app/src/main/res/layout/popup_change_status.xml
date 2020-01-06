@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:paddingBottom="20dp"
         android:paddingEnd="40dp"
-        android:paddingStart="40dp">
+        android:paddingStart="20dp">
 
         <RadioButton
             android:id="@+id/radioButton"
@@ -57,6 +57,20 @@
             android:text="Cancel Order"
             android:textSize="18sp" />
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_radius"
+        android:cursorVisible="true"
+        android:gravity="top|start"
+        android:hint="Enter Reason"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/button2"
