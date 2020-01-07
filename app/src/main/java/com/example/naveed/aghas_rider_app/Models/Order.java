@@ -63,6 +63,8 @@ public class Order {
         this.value = value;
     }
 
+
+
     public class Value {
 
         @SerializedName("id")
@@ -74,6 +76,9 @@ public class Order {
         @SerializedName("customerName")
         @Expose
         private String customerName;
+        @SerializedName("customerPhone")
+        @Expose
+        private Object customerPhone;
         @SerializedName("total")
         @Expose
         private Integer total;
@@ -118,7 +123,19 @@ public class Order {
         private String contactNo;
         @SerializedName("assignedTo")
         @Expose
-        private Object assignedTo;
+        private String assignedTo;
+        @SerializedName("assignedToID")
+        @Expose
+        private String assignedToID;
+        @SerializedName("latitude")
+        @Expose
+        private Object latitude;
+        @SerializedName("longitude")
+        @Expose
+        private Object longitude;
+        @SerializedName("isPrint")
+        @Expose
+        private Integer isPrint;
         @SerializedName("orderItem")
         @Expose
         private List<OrderItem> orderItem = null;
@@ -147,6 +164,14 @@ public class Order {
             this.customerName = customerName;
         }
 
+        public Object getCustomerPhone() {
+            return customerPhone;
+        }
+
+        public void setCustomerPhone(Object customerPhone) {
+            this.customerPhone = customerPhone;
+        }
+
         public Integer getTotal() {
             return total;
         }
@@ -171,9 +196,13 @@ public class Order {
             this.orderTime = orderTime;
         }
 
-        public String getDeliveryDate() { return deliveryDate; }
+        public String getDeliveryDate() {
+            return deliveryDate;
+        }
 
-        public void setDeliveryDate(String deliveryDate) { this.deliveryDate = deliveryDate; }
+        public void setDeliveryDate(String deliveryDate) {
+            this.deliveryDate = deliveryDate;
+        }
 
         public Integer getOrderStatusId() {
             return orderStatusId;
@@ -255,12 +284,44 @@ public class Order {
             this.contactNo = contactNo;
         }
 
-        public Object getAssignedTo() {
+        public String getAssignedTo() {
             return assignedTo;
         }
 
-        public void setAssignedTo(Object assignedTo) {
+        public void setAssignedTo(String assignedTo) {
             this.assignedTo = assignedTo;
+        }
+
+        public String getAssignedToID() {
+            return assignedToID;
+        }
+
+        public void setAssignedToID(String assignedToID) {
+            this.assignedToID = assignedToID;
+        }
+
+        public Object getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(Object latitude) {
+            this.latitude = latitude;
+        }
+
+        public Object getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(Object longitude) {
+            this.longitude = longitude;
+        }
+
+        public Integer getIsPrint() {
+            return isPrint;
+        }
+
+        public void setIsPrint(Integer isPrint) {
+            this.isPrint = isPrint;
         }
 
         public List<OrderItem> getOrderItem() {
@@ -322,12 +383,16 @@ public class Order {
             return itemName;
         }
 
-        public String getPrice() { return price; }
-
-        public void setPrice(String price) { this.price = price; }
-
         public void setItemName(String itemName) {
             this.itemName = itemName;
+        }
+
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
         }
 
         public Integer getQuantity() {

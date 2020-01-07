@@ -5,11 +5,17 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <LinearLayout
+
+
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.65"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"
+        />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,6 +45,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/txt_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="03332309923"
@@ -62,6 +69,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/txt_cus_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Muhammad Naveed"
@@ -86,6 +94,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/txt_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
@@ -103,7 +112,7 @@
 
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btn_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_radius_red"

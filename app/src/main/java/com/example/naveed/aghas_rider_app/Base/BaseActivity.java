@@ -1,9 +1,13 @@
 package com.example.naveed.aghas_rider_app.Base;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.ViewDataBinding;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +45,27 @@ public class BaseActivity extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, activity));
         }
+    }
+
+
+    public void callCustomer(String customerNumber) {
+
+
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + customerNumber));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+
+            new android.app.AlertDialog.Builder(this)
+                    .setTitle("App")
+                    .setMessage("Call permission not granted !")
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+
+
+
+            return;
+        }
+        startActivity(intent);
     }
 
     public <S> void OpenActivity(Class<S> activity, String data){

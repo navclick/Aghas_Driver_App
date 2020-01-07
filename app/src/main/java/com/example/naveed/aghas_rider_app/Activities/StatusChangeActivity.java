@@ -122,6 +122,8 @@ public static int OrderId=0;
 
         }
 
+
+
         if(statusCode==6){
 
             txt_reason.setText("N/A");
@@ -143,7 +145,11 @@ public static int OrderId=0;
 
 
         showProgress();
-        Log.d("test","intest");
+
+
+
+
+
         RestClient.getAuthAdapterToekn(tokenHelper.GetToken()).UpdateStatus(OrderId,statusCode,txt_reason.getText().toString()).enqueue(new GeneralCallBack<GResponse>(this) {
             @Override
             public void onSuccess(GResponse response) {

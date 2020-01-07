@@ -9,7 +9,7 @@ public class TokenHelper {
     // Declarations
     private final Context context;
     private final SharedPreferences sharedPreferences;
-
+    private static final String FCMTOKEN = "FCMTOKEN";
     public TokenHelper(Context context){
         this.context = context;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -66,5 +66,22 @@ public class TokenHelper {
         prefsEditor.clear();
         return prefsEditor.commit();
     }
+
+    public boolean saveFCMToken(String fcmtoken) {
+        android.content.SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+
+        prefsEditor.putString(FCMTOKEN, fcmtoken);
+        return prefsEditor.commit();
+
+    }
+
+
+    public String getFCMToken() {
+
+        String FCMToken = sharedPreferences.getString(FCMTOKEN, "");
+
+        return FCMToken;
+    }
+
 
 }

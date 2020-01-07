@@ -2,6 +2,7 @@ package com.example.naveed.aghas_rider_app.Activities;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.naveed.aghas_rider_app.BackGroundServices.LocationService;
 import com.example.naveed.aghas_rider_app.Base.BaseActivity;
 import com.example.naveed.aghas_rider_app.Helpers.Constants;
 import com.example.naveed.aghas_rider_app.Helpers.GeneralCallBack;
@@ -75,6 +77,14 @@ public class CurrentOrderActivity extends BaseActivity implements View.OnClickLi
         btnViewOrder.setOnClickListener(this);
         GetPermissions();
         TokenString = tokenHelper.GetToken();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //  this.startForegroundService(new Intent(this, LocationService.class));
+            startForegroundService(new Intent(this, LocationService.class));
+
+        } else {
+            startService(new Intent(this, LocationService.class));
+        }
         if(TokenString == null)
             OpenActivity(LoginActivity.class);
 

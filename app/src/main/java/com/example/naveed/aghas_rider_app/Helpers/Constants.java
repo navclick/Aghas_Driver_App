@@ -39,7 +39,7 @@ public class Constants {
     public static final int ORDER_CANCELLED_BY_CUSTOMER = 11;
     public static final int ORDER_CANCELLED= 7;
 
-
+    public static final int APP_TYPE =1; //0-web, 1-android, 2-Ios
     public static final Map<Integer, String> OrderStatus = new HashMap<Integer, String>();
 
     public static void init(){

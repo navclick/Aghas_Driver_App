@@ -11,6 +11,7 @@ public class EndPoints {
     public static final String MAKEACTIVE = API_PREFIX + "order/MakeOrderActive";
 
     public static final String UPDATESTATUS = API_PREFIX + "order/UpdateOrderStatusFromRider";
+    static final String UPDATEDEVICEINFO=API_PREFIX+"notification/addUpdatefcmtoken";
 
 
 }

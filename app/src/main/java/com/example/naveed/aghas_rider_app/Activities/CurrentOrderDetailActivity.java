@@ -41,7 +41,7 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
     //Declarations
     public String TokenString;
     TextView txtOrderId, txtCustomerName, txtAddress, txtTotal, txtOrderDate, txtDeliveryDate;
-    Button btnChangeOrderStatus, btnHome, btn_call;
+    Button btnChangeOrderStatus, btnHome, btn_call,btn_nav;
 
     private List<OrderItems> myOrderList = new ArrayList<>();
     private RecyclerView recyclerViewOrderItems;
@@ -63,6 +63,9 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
         btnChangeOrderStatus = (Button) findViewById(R.id.btn_changeorderstatus);
         btnHome = (Button) findViewById(R.id.btn_home);
         btn_call = (Button) findViewById(R.id.btn_call);
+        btn_nav = (Button) findViewById(R.id.btn_nav);
+
+        btn_nav.setOnClickListener(this);
         // Events
         btnChangeOrderStatus.setOnClickListener(this);
         btnHome.setOnClickListener(this);
@@ -97,41 +100,33 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
                 break;
 
             case R.id.btn_call:
-                callCustomer();
+                callCustomer(CustomerCell);
                 break;
             case R.id.btn_changeorderstatus:
+
+                StatusChangeActivity.OrderId= Integer.valueOf(txtOrderId.getText().toString());
                 openActivity(StatusChangeActivity.class);
                 break;
 
 
+            case R.id.btn_nav:
+
+
+                openActivity(NavigationActivity.class);
+                break;
+
+
         }
 
 
 
     }
 
-    private void callCustomer() {
 
-
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + CustomerCell));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-
-
-            new AlertDialog.Builder(this)
-                    .setTitle("App")
-                    .setMessage("Call permission not granted !")
-                    .setPositiveButton(android.R.string.ok, null)
-                    .show();
-
-
-
-            return;
-        }
-        startActivity(intent);
-    }
 
 
     private void GetCurrentOrder(int orderid){
+        NavigationActivity.order=null;
         showProgress();
         try {
             IApiCaller callerResponse = ApiClient.createService(IApiCaller.class);
@@ -158,8 +153,13 @@ public class CurrentOrderDetailActivity extends BaseActivity implements View.OnC
                         }
                     }else{
                         Order.Value list = obj.getValue();
+                        NavigationActivity.order=obj;
+
 
                         String orderid = list.getId().toString();
+
+
+
                         String customername = list.getCustomerName();
                         String address = list.getAddress();
                         String total = list.getTotal().toString();

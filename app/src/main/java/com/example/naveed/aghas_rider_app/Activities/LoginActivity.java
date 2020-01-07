@@ -1,5 +1,7 @@
 package com.example.naveed.aghas_rider_app.Activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,13 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.naveed.aghas_rider_app.BackGroundServices.LocationService;
 import com.example.naveed.aghas_rider_app.Base.BaseActivity;
+import com.example.naveed.aghas_rider_app.Helpers.Constants;
+import com.example.naveed.aghas_rider_app.Helpers.GeneralCallBack;
 import com.example.naveed.aghas_rider_app.Helpers.GeneralHelper;
+import com.example.naveed.aghas_rider_app.Models.DeviceInfoRequest;
+import com.example.naveed.aghas_rider_app.Models.DeviceInfoResponse;
 import com.example.naveed.aghas_rider_app.Models.Token;
 import com.example.naveed.aghas_rider_app.Network.ApiClient;
 import com.example.naveed.aghas_rider_app.Network.IApiCaller;
+import com.example.naveed.aghas_rider_app.Network.RestClient;
 import com.example.naveed.aghas_rider_app.R;
 import com.example.naveed.aghas_rider_app.Utilities.ValidationUtility;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -99,6 +108,8 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
                         if(isTokenSet == true){
                             // TODO: Open main screen if token is set successfully
                             OpenActivity(CurrentOrderActivity.class);
+
+                            addUpdateDeviceInfoToServer(FirebaseInstanceId.getInstance().getToken());
                         }
                     }
                 }
@@ -123,5 +134,71 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
         }else{
             return true;
         }
+    }
+
+
+    public void addUpdateDeviceInfoToServer(String FCMtoken){
+        //showProgress();
+
+        if(FCMtoken.isEmpty() || FCMtoken ==""){
+            return;
+
+
+        }
+
+
+        DeviceInfoRequest obj = new DeviceInfoRequest();
+        obj.setAppType(Constants.APP_TYPE);
+        obj.setFCMToken(FCMtoken);
+
+
+        Gson gson = new Gson();
+        String Reslog= gson.toJson(obj);
+        Log.d("testme", Reslog);
+
+        RestClient.getAuthAdapterToekn(tokenHelper.GetToken()).updateDeviceInfo(obj).enqueue(new GeneralCallBack<DeviceInfoResponse>(this) {
+            @Override
+            public void onSuccess(DeviceInfoResponse response) {
+                Gson gson = new Gson();
+                String Reslog= gson.toJson(response);
+                Log.d("testme", Reslog);
+
+                if(!response.getIserror()){
+                    String msg=getApplicationContext().getString(R.string.msg_device_info_successfull);
+                    Toast.makeText(getApplicationContext(),msg ,
+                            Toast.LENGTH_LONG).show();
+
+
+                }
+                else{
+
+                    String msg=getApplicationContext().getString(R.string.msg_device_info_failed);
+                    Toast.makeText(getApplicationContext(),msg ,
+                            Toast.LENGTH_LONG).show();
+
+                }
+
+                hideProgress();
+
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                //onFailure implementation would be in GeneralCallBack class
+                hideProgress();
+                String msg=getApplicationContext().getString(R.string.msg_device_info_failed);
+                Toast.makeText(getApplicationContext(),msg ,
+                        Toast.LENGTH_LONG).show();
+
+            }
+
+
+
+        });
+
+
+
     }
 }
