@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Agha\'s Rider App</string>
+    <string name="app_name">Your App</string>
     <string name="main_card">RECEIVE</string>
     <!--<string name="main_card">RECEIVE\n<font size="20">PKR\n521041</font></string>-->
     <string name="schedule_card">8 DEC\nWED</string>
